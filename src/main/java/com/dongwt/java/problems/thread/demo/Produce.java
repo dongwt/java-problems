@@ -18,7 +18,6 @@ public class Produce implements Runnable {
 
 		try {
 			while (count > 0) {
-				int num = 10 - this.count + 1;
 				synchronized (task) {
 					for (int i = 0; i < 3; i++) {
 						while (!task.isEqual(-1)) {
