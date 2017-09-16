@@ -1,5 +1,6 @@
 package com.dongwt.java.problems.lambda;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dongwt.java.problems.model.Person;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Created by dongwt on 2017/9/14.
@@ -43,7 +45,8 @@ public class OrdinaryTest {
     @Test
     public void testList() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        numbers.stream().filter(item -> item % 2 == 0).map(item -> item * 100).forEach(System.out::println);
+        List<Integer> result = numbers.stream().filter(item -> item % 2 == 0).map(item -> item * 100).collect(Collectors.toList());
+        System.out.println(JSONObject.toJSONString(result));
     }
 
     @Test
@@ -102,5 +105,6 @@ public class OrdinaryTest {
                 .sorted()
                 .reduce((s1, s2) -> s1 + "#" + s2);
         reduced.ifPresent(System.out::println);
+        System.out.println(reduced.get());
     }
 }
