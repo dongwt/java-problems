@@ -1,7 +1,9 @@
 package com.dongwt.java.problems;
 
+import com.dongwt.java.problems.model.SexEnums;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,11 +12,19 @@ import java.util.Date;
  */
 public class DemoTest {
 
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
     @Test
-    public void test() {
-        Date date = new Date(1517932800000l);
-        System.out.println(simpleDateFormat.format(date));
+    public void test() throws ParseException {
+        Long beginDate = dateFormat.parse("2018-03-05").getTime();
+        System.out.println(beginDate);
+        Long endDate = dateFormat.parse("2018-03-31").getTime();
+        System.out.println(endDate);
+        Long beginTime = timeFormat.parse("10:00:00").getTime();
+        System.out.println(beginTime);
+        Long endTime = timeFormat.parse("10:30:00").getTime();
+        System.out.println(endTime);
     }
 }
